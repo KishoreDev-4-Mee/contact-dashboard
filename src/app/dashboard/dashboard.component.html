@@ -1,0 +1,43 @@
+<div class="no-data" *ngIf="loading">
+    <button class="btn bg-transparent border-0" type="button">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+</div>
+
+
+<div class="card" *ngIf="!loading">
+    <div class="card-body">
+        <h5 class="card-title">Dashboard</h5>
+
+        <!-- Default Tabs -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="table-tab" data-bs-toggle="tab" data-bs-target="#table"
+                    type="button" role="tab" aria-controls="table" aria-selected="false" tabindex="-1">Table
+                    View</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#mapview" type="button"
+                    role="tab" aria-controls="mapview" aria-selected="false" tabindex="-1">Map View</button>
+            </li>
+
+        </ul>
+        <div class="tab-content pt-2" id="myTabContent">
+            <div class="tab-pane fade active show" id="table" role="tabpanel" aria-labelledby="table-tab">
+                <table id="userdata" *ngIf="showData" class="display nowrap" style="width:100%">
+
+                </table>
+                <div class="no-data" *ngIf="!showData">
+                    <h3 *ngIf="!showData">No data available!</h3>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="mapview" role="tabpanel" aria-labelledby="profile-tab">
+                <div id="map"></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

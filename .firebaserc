@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "project-1-3be32"
+  },
+  "targets": {
+    "project-1-3be32": {
+      "hosting": {
+        "web": [
+          "contact-dashboard-7be3"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

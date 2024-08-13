@@ -1,0 +1,87 @@
+<section>
+    <div class="row m-auto">
+        <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title">Contact Details</h5>
+
+                <!-- Horizontal Form -->
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                    <div class="row mb-3">
+                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input formControlName="name" type="text" class="form-control" id="name">
+                            <div class="text-danger"
+                                *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                                Name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="phonenumber" class="col-sm-2 col-form-label">Phone Number</label>
+                        <div class="col-sm-10">
+                            <input type="number" formControlName="phonenumber" class="form-control" id="phonenumber">
+                            <div class="text-danger"
+                                *ngIf="contactForm.get('phonenumber')?.invalid && contactForm.get('phonenumber')?.touched">
+                                Phone number is required and should be 10 digits.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" formControlName="email">
+                            <div class="text-danger"
+                                *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                                Valid email is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3" formArrayName="addresses">
+                        <label>Address</label>
+                        <div class="w-75 m-auto">
+                            <div class="mb-3" *ngFor="let address of addresses.controls; let i = index"
+                                [formGroupName]="i">
+                                <label class="col-sm-2 col-form-label" for="street">Street:</label>
+                                <input class="form-control" id="street" formControlName="street">
+
+                                <label class="col-sm-2 col-form-label" for="city">City:</label>
+                                <input class="form-control" id="city" formControlName="city">
+
+                                <label class="col-sm-2 col-form-label" for="state">State:</label>
+                                <input class="form-control" id="state" formControlName="state">
+
+                                <label class="col-sm-2 col-form-label" for="zip">Zip:</label>
+                                <input class="form-control" id="zip" formControlName="zip">
+                            </div>
+
+                            <button type="button" class="btn btn-success" (click)="addAddress()">Add Another
+                                Address</button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="longitude" class="col-sm-2 col-form-label">Longitude</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="longitude" formControlName="longitude">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="latidude" class="col-sm-2 col-form-label">Latidude</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="latidude" name="latidude"
+                                formControlName="latitude">
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" [disabled]="contactForm.invalid"
+                            class="btn btn-primary m-3">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
